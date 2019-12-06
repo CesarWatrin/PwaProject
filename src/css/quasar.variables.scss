@@ -12,7 +12,8 @@
 // to match your app's branding.
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
-$primary   : #027BE3;
+// $primary   : #027BE3;
+$primary : #BE1E2D;
 $secondary : #26A69A;
 $accent    : #9C27B0;
 
@@ -22,3 +23,9 @@ $positive  : #21BA45;
 $negative  : #C10015;
 $info      : #31CCEC;
 $warning   : #F2C037;
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Palanquin|Rubik&display=swap');
+
+$fontHigh: Rubik;
+$fontLow: Palanquin;
