@@ -8,7 +8,7 @@ module.exports = function (ctx) {
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
     boot: [
       'i18n',
-      'axios'
+      'axios',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -43,7 +43,13 @@ module.exports = function (ctx) {
       //            (not treeshaking Quasar; biggest bundle size; convenient)
       all: 'auto',
 
-      components: [],
+      components: [
+        'QHeader',
+        'QFooter',
+        'QDrawer',
+        'QIcon',
+        'QBtn'
+      ],
       directives: [],
       lang: 'fr',
       // Quasar plugins

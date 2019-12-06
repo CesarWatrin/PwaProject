@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header class="topNavBar" elevated reveal>
+    <q-header elevated>
       <q-toolbar>
         <q-btn
           flat
@@ -9,11 +9,15 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
           icon="menu"
           aria-label="Menu"
-        />
-        <q-title>
-          Accueil
-        </q-title>
+          />
 
+        <q-toolbar-title>
+          Accueil
+        </q-toolbar-title>
+
+        <q-btn id="connexion" flat dense>
+          Connexion
+        </q-btn>
       </q-toolbar>
     </q-header>
 
@@ -26,91 +30,28 @@
     >
       <q-list>
         <q-item-label header>Accueil</q-item-label>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
+
+        <q-item
+          v-for="nav in navs" v-bind:key="nav.label"
+          :to="nav.to"
+          v-ripple :active="active"
+          clickable>
           <q-item-section avatar>
-            <q-icon name="home" />
+            <q-icon :name="nav.icon" style="color: black"/>
           </q-item-section>
-          <q-item-section>
-            <q-item-label>Accueil</q-item-label>
-            <q-item-label caption>quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-          <q-item clickable tag="a" target="_blank" href="https://github.quasar.dev">
-            <q-item-section avatar>
-              <q-icon fas name="poll" />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>Mes stats</q-item-label>
-              <q-item-label caption>github.com/quasarframework</q-item-label>
-            </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://github.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="build" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Outils</q-item-label>
-            <q-item-label caption>github.com/quasarframework</q-item-label>
-          </q-item-section>
-      </q-item>
-        <hr>
-        <q-item clickable tag="a" target="_blank" href="https://github.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="fitness_center" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Entrainement</q-item-label>
-            <q-item-label caption>github.com/quasarframework</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://chat.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="trending_up" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Compétition</q-item-label>
-            <q-item-label caption>chat.quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <hr>
-        <q-item clickable tag="a" target="_blank" href="https://forum.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="storefront" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Club</q-item-label>
-            <q-item-label caption>forum.quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://twitter.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="chat" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Contact</q-item-label>
-            <q-item-label caption>@quasarframework</q-item-label>
-          </q-item-section>
-        </q-item>
-        <hr>
-        <q-item clickable tag="a" target="_blank" href="https://twitter.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="error_outline" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>À propos</q-item-label>
-            <q-item-label caption>@quasarframework</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://twitter.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="menu_book" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>CGU</q-item-label>
+          <q-item-section  >
+            <q-item-label class="label"  style="color: black" >{{ nav.label }}</q-item-label>
             <q-item-label caption>@quasarframework</q-item-label>
           </q-item-section>
         </q-item>
 
+        <!-- <hr> -->
+
+        <q-item footer>
+          <q-btn>
+            Langue
+          </q-btn>
+        </q-item>
       </q-list>
     </q-drawer>
 
@@ -126,7 +67,54 @@ export default {
 
   data () {
     return {
-      leftDrawerOpen: false
+      leftDrawerOpen: this.$q.platform.is.desktop,
+      navs: [
+        {
+          label: 'Accueil',
+          icon: 'home',
+          to: '/'
+        },
+        {
+          label: 'Mes stats',
+          icon: 'trending_up',
+          to: '/'
+        },
+        {
+          label: 'Outils',
+          icon: 'build',
+          to: '/'
+        },
+        {
+          label: 'Entrainement',
+          icon: 'fitness_center',
+          to: '/'
+        },
+        {
+          label: 'Compétition',
+          icon: 'assessment',
+          to: '/'
+        },
+        {
+          label: 'Club',
+          icon: 'storefront',
+          to: '/Club'
+        },
+        {
+          label: 'Contact',
+          icon: 'chat',
+          to: '/'
+        },
+        {
+          label: 'À propos',
+          icon: 'error',
+          to: '/'
+        },
+        {
+          label: 'CGU',
+          icon: 'menu_book',
+          to: '/'
+        }
+      ]
     }
   }
 }
@@ -135,19 +123,13 @@ export default {
 <style lang="scss">
   *{
     font-family: $fontLow;
-    font-style: bold;
+    font-weight: bold;
   }
   hr{
     opacity: 0.2;
   }
-  .topNavBar{
-    // color: black;
-    font-family: $fontLow;
-    font-style: bold;
-    // background-color: white;
+  #connexion{
+    font-family: $fontHigh;
+    font-weight: bolder;
   }
-  q-title{
-    margin-left: 2em;
-  }
-
 </style>

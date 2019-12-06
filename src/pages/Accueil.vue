@@ -2,7 +2,7 @@
   <!-- <q-page class="flex flex-center">
     <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
   </q-page> -->
-  <q-page class="content">
+  <q-page id="content" class="flex flex-center">
     <q-img
       src="statics/backgrounds/accueil.png"
       class="fullscreen"
@@ -16,6 +16,11 @@
         et aux tournois de boxe en ligne
       </p>
     </div>
+    <q-footer elevated>
+      <q-toolbar>
+        <q-toolbar-title>Footer</q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
   </q-page>
 </template>
 
@@ -29,7 +34,7 @@ export default {
   .fullscreen {
     z-index: -100;
   }
-  .content{
+  #content{
     margin: 0 3em;
     color: white;
     h1{
